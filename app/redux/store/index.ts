@@ -14,7 +14,7 @@ const appReducers = combineReducers({
 });
 
 // define root reducer
-const rootReducer = (state:Object, action:AnyAction) => {
+const rootReducer = (state:any, action:AnyAction) => {
   return appReducers(state, action);
 }
 
