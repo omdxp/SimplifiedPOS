@@ -13,13 +13,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './app/screens/Navigation';
 
 export default function App() {
+  console.log('persistor state:', persistor.getState());
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <PersistGate persistor={persistor}>
+      <PersistGate persistor={persistor} loading={null}>
+        <NavigationContainer>
           <Navigation />
-        </PersistGate>
-      </NavigationContainer>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }

@@ -1,6 +1,6 @@
 // import react native
-import React, {FC} from 'react';
-import {Text, View, FlatList} from 'react-native';
+import React, {FC, useReducer} from 'react';
+import {FlatList} from 'react-native';
 
 // import navigation
 import {useNavigation} from '@react-navigation/native';
@@ -11,6 +11,10 @@ import ProductComponent from './Product';
 // import data type
 import {DataType} from '../test_data';
 
+// import redux
+import {useDispatch} from 'react-redux';
+import {addProductToCart} from '../redux/actions';
+
 // define products list props interface
 interface ProductsListProps {
   data: DataType;
@@ -18,8 +22,12 @@ interface ProductsListProps {
 
 // export ProductsList component
 const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
+  // use disptach
+  const dispatch = useDispatch();
+
   // use navigation
   const navigation = useNavigation();
+
   return (
     <FlatList
       numColumns={4}
@@ -32,7 +40,7 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           image={item.image}
           price={item.price}
           onPress={() => {
-            console.log('Pressed!');
+            dispatch(addProductToCart(item));
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {

@@ -1,5 +1,5 @@
 // import redux
-import {createStore, combineReducers, AnyAction} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 
@@ -18,7 +18,7 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // config persist store
-const persistConfig: PersistConfig<any> = {
+const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   whitelist: ['CartReducer'],
