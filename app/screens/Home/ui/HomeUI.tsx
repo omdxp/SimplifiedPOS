@@ -20,15 +20,15 @@ import { DATA } from '../../../test_data';
 const HomeUI: FC = (): JSX.Element => {
   return (
     <View style={globalStyles.mainView}>
-      {/* <FlatList
+      <FlatList
         numColumns={5}
         initialNumToRender={5}
         data={DATA}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} onPress={()=>{console.log('pressed!');
         }} />}
-      /> */}
-      <ProductDetailsScreen image={DATA[0].image} title={DATA[0].title} description={DATA[0].title} price={DATA[0].price} />
+      />
+      {/* <ProductDetailsScreen image={DATA[0].image} title={DATA[0].title} description={DATA[0].title} price={DATA[0].price} /> */}
     </View>
   );
 }
