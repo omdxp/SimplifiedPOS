@@ -9,15 +9,16 @@ import globalStyles from '../styles';
 // define product props interface
 interface ProductProps {
   title: string,
+  image: string,
   price: string
 }
 
 // export Product component
-const Product: FC<ProductProps> = ({title, price}): JSX.Element => {
+const Product: FC<ProductProps> = ({title, image,  price}): JSX.Element => {
   return (
     <View style={globalStyles.productView}>
       <Image
-          source={require('../assets/images/test_product.jpg')}
+          source={{uri: image}}
           style={globalStyles.productImage}
         />
       <View style={globalStyles.productTextView}>

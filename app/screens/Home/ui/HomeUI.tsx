@@ -1,7 +1,7 @@
 
 // import react native
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ListView } from 'react-native';
 
 // import components
 import ProductComponent from '../../../components/Product';
@@ -16,7 +16,8 @@ import globalStyles from '../../../styles';
 export default function HomeUI() {
   return (
     <View style={globalStyles.mainView}>
-      <ProductComponent title={'Product name'} price={'Product price'} />
+      
+      <ProductComponent title={'Product name'} image={'https://upload.wikimedia.org/wikipedia/en/6/6e/Sekiro_art.jpg'} price={'Product price'} />
     </View>
   );
 }
