@@ -28,7 +28,7 @@ const HomeUI: FC = (): JSX.Element => {
         renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} onPress={()=>{console.log('pressed!');
         }} />}
       /> */}
-      <ProductDetailsScreen />
+      <ProductDetailsScreen image={DATA[0].image} title={DATA[0].title} description={DATA[0].title} price={DATA[0].price} />
     </View>
   );
 }

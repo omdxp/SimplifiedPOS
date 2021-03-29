@@ -1,27 +1,36 @@
 
 // import react native
-import React from 'react';
+import React, { FC } from 'react';
 import { Text, View, Image, ScrollView } from 'react-native';
 
 // import global styles
 import globalStyles from '../../../styles';
 
 // import ProductDetails functions
-import {} from '../functions';
+import { } from '../functions';
+
+// define product details props interface
+interface ProductDetailsProps {
+  image: string,
+  title: string,
+  description: string,
+  price: string
+}
 
 // export ProductDetails UI
-export default function ProductDetailsUI() {
+const ProductDetailsUI: FC<ProductDetailsProps> = ({image, title, description, price}):JSX.Element => {
   return (
     <View style={globalStyles.mainView}>
       <Image
-        source={require('../../../assets/images/test_product.jpg')}
+        source={{uri: image}}
         style={globalStyles.productDetailsImage}
       />
       <ScrollView style={globalStyles.productDetailsTextView}>
-        <Text style={globalStyles.productDetailsTitleText}>Product name</Text>
-        <Text style={globalStyles.productDetailsDescriptionText}>Product description</Text>
-        <Text style={globalStyles.productDetailsPriceText}>$200</Text>
+        <Text style={globalStyles.productDetailsTitleText}>{ title }</Text>
+        <Text style={globalStyles.productDetailsDescriptionText}>{ description }</Text>
+        <Text style={globalStyles.productDetailsPriceText}>{ price }</Text>
       </ScrollView>
     </View>
   );
 }
+export default ProductDetailsUI;
