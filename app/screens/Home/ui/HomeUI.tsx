@@ -1,23 +1,27 @@
-
 // import react native
-import React, { FC } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import React, {FC} from 'react';
+import {Text, View, FlatList} from 'react-native';
 
 // import components
 import ProductComponent from '../../../components/Product';
 import ProductDetailsScreen from '../../ProductDetails/ui/ProductDetailsUI';
 
+// import navigation
+import {useNavigation} from '@react-navigation/native';
+
 // import global styles
 import globalStyles from '../../../styles';
 
 // import test data
-import { DATA } from '../../../test_data';
+import {DATA} from '../../../test_data';
 
 // import Home functions
 // import {} from '../functions';
 
 // export Home UI
 const HomeUI: FC = (): JSX.Element => {
+  // use navigation
+  const navigation = useNavigation();
   return (
     <View style={globalStyles.mainView}>
       <FlatList
@@ -25,11 +29,24 @@ const HomeUI: FC = (): JSX.Element => {
         initialNumToRender={5}
         data={DATA}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} onPress={()=>{console.log('pressed!');
-        }} />}
+        renderItem={({item}) => (
+          <ProductComponent
+            title={item.title}
+            image={item.image}
+            price={item.price}
+            onPress={() => {
+              navigation.navigate('ProductDetails', {
+                image: item.image,
+                title: item.title,
+                description: item.title,
+                price: item.price,
+              });
+            }}
+          />
+        )}
       />
       {/* <ProductDetailsScreen image={DATA[0].image} title={DATA[0].title} description={DATA[0].title} price={DATA[0].price} /> */}
     </View>
   );
-}
+};
 export default HomeUI;
