@@ -1,29 +1,28 @@
-
 // import redux
-import { createStore, combineReducers, AnyAction } from 'redux';
+import {createStore, combineReducers, AnyAction} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {persistReducer, persistStore } from 'redux-persist';
+import {persistReducer, persistStore} from 'redux-persist';
 
 // import redux reducers
-import {} from '../reducers';
-import { PersistConfig } from 'redux-persist/es/types';
+import {CartReducer} from '../reducers';
+import {PersistConfig} from 'redux-persist/es/types';
 
 // define app reducers
 const appReducers = combineReducers({
-  // you need to add your reducers here
+  CartReducer,
 });
 
 // define root reducer
-const rootReducer = (state:any, action:AnyAction) => {
+const rootReducer = (state: any, action: any) => {
   return appReducers(state, action);
-}
+};
 
 // config persist store
-const persistConfig: PersistConfig<Object> = {
+const persistConfig: PersistConfig<any> = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['']
-}
+  whitelist: ['CartReducer'],
+};
 
 // define persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);

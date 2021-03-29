@@ -20,7 +20,7 @@ const Cart: FC = (): JSX.Element => {
       <FlatList
         data={DATA}
         renderItem={({item}) => (
-          <ProductItemComponent name={item.title} quantity={2} />
+          <ProductItemComponent name={item.title} quantity={item.quantity} />
         )}
         keyExtractor={(_, index) => index.toString()}
         ItemSeparatorComponent={() => (
