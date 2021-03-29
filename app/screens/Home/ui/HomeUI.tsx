@@ -1,13 +1,16 @@
 
 // import react native
 import React from 'react';
-import { Text, View, ListView } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 
 // import components
 import ProductComponent from '../../../components/Product';
 
 // import global styles
 import globalStyles from '../../../styles';
+
+// import test data
+import { DATA } from '../../../test_data';
 
 // import Home functions
 // import {} from '../functions';
@@ -16,8 +19,12 @@ import globalStyles from '../../../styles';
 export default function HomeUI() {
   return (
     <View style={globalStyles.mainView}>
-      
-      <ProductComponent title={'Product name'} image={'https://upload.wikimedia.org/wikipedia/en/6/6e/Sekiro_art.jpg'} price={'Product price'} />
+      <FlatList
+        horizontal
+        data={DATA}
+        ItemSeparatorComponent={()=><View style={globalStyles.spaceView} />}
+        renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} />}
+      />
     </View>
   );
 }

@@ -31,5 +31,8 @@ const globalStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 17,
   },
+  spaceView: {
+    margin: 10,
+  },
 });
 export default globalStyles;
