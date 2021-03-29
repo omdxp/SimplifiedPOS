@@ -14,7 +14,7 @@ export default function HomeUI() {
   return (
     <View>
       <Text>Home UI created!</Text>
-      <ProductComponent />
+      <ProductComponent title={'Product name'} price={'Product price'} />
     </View>
   );
 }

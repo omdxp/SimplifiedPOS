@@ -1,13 +1,19 @@
 
 // import react native
-import React from 'react';
+import React, { FC } from 'react';
 import { Text, View, Image } from 'react-native';
 
 // import global styles
 import globalStyles from '../styles';
 
+// define product props interface
+interface ProductProps {
+  title: string,
+  price: string
+}
+
 // export Product component
-export default function Product() {
+const Product: FC<ProductProps> = ({title, price}): JSX.Element => {
   return (
     <View style={globalStyles.productView}>
       <Image
@@ -15,10 +21,11 @@ export default function Product() {
           style={globalStyles.productImage}
         />
       <View style={globalStyles.productTextView}>
-        <Text style={globalStyles.productTitleText}>Product name</Text>
-        <Text style={globalStyles.productPriceText}>Product price</Text>
+        <Text style={globalStyles.productTitleText}>{ title }</Text>
+        <Text style={globalStyles.productPriceText}>{ price }</Text>
       </View>
     </View>
   );
 }
+export default Product;
 
