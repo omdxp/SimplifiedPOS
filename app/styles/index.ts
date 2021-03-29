@@ -4,6 +4,7 @@ import {Colors} from './colors';
 
 // export global styles
 const globalStyles = StyleSheet.create({
+  // shared styles
   mainView: {
     flex: 1,
     padding: 10,
@@ -11,6 +12,10 @@ const globalStyles = StyleSheet.create({
   rowView: {
     flexDirection: 'row',
   },
+  spaceView: {
+    margin: 10,
+  },
+  // product styles
   productView: {
     margin: 10,
     borderRadius: 20,
@@ -36,9 +41,7 @@ const globalStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 17,
   },
-  spaceView: {
-    margin: 10,
-  },
+  // product details styles
   productDetailsImage: {
     flex: 2,
     width: '100%',
@@ -60,6 +63,17 @@ const globalStyles = StyleSheet.create({
     alignSelf: 'flex-end',
     fontSize: 25,
     fontWeight: 'bold',
+  },
+  // cart styles
+  cartView: {
+    padding: 5,
+    backgroundColor: Colors.white,
+    height: '100%',
+  },
+  cartTitleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    margin: 10,
   },
 });
 export default globalStyles;
