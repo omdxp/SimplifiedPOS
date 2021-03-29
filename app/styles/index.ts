@@ -5,6 +5,7 @@ import {Colors} from './colors';
 // export global styles
 const globalStyles = StyleSheet.create({
   mainView: {
+    flex: 1,
     padding: 10,
   },
   productView: {
@@ -34,6 +35,28 @@ const globalStyles = StyleSheet.create({
   },
   spaceView: {
     margin: 10,
+  },
+  productDetailsImage: {
+    flex: 2,
+    width: '100%',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
+  productDetailsTextView: {
+    flex: 1,
+  },
+  productDetailsTitleText: {
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: 30,
+  },
+  productDetailsDescriptionText: {
+    fontSize: 20,
+  },
+  productDetailsPriceText: {
+    alignSelf: 'flex-end',
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 });
 export default globalStyles;
