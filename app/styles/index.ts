@@ -9,7 +9,6 @@ const globalStyles = StyleSheet.create({
   },
   productView: {
     borderRadius: 20,
-    backgroundColor: Colors.mainColor,
     width: 200,
   },
   productImage: {
@@ -20,7 +19,6 @@ const globalStyles = StyleSheet.create({
   },
   productTextView: {
     height: 70,
-    borderTopRightRadius: 5,
     backgroundColor: Colors.lightGrey,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
