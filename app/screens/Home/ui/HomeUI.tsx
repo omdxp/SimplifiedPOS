@@ -19,8 +19,14 @@ import {DATA} from '../../../test_data';
 const HomeUI: FC = (): JSX.Element => {
   return (
     <View style={globalStyles.mainView}>
-      {/* <ProductsListComponent data={DATA} /> */}
-      <CartComponent />
+      <View style={globalStyles.rowView}>
+        <View style={{flex: 3}}>
+          <ProductsListComponent data={DATA} />
+        </View>
+        <View style={{flex: 1}}>
+          <CartComponent />
+        </View>
+      </View>
     </View>
   );
 };

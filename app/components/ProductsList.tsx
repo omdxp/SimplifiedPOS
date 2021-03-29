@@ -22,8 +22,8 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   const navigation = useNavigation();
   return (
     <FlatList
-      numColumns={5}
-      initialNumToRender={5}
+      numColumns={4}
+      initialNumToRender={4}
       data={data}
       keyExtractor={(_, index) => index.toString()}
       renderItem={({item}) => (

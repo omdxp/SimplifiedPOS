@@ -8,6 +8,9 @@ const globalStyles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  rowView: {
+    flexDirection: 'row',
+  },
   productView: {
     margin: 10,
     borderRadius: 20,

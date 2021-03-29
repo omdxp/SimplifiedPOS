@@ -2,6 +2,9 @@
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
 
+// import global styles
+import globalStyles from '../styles';
+
 // define product item props interface
 interface ProductItemProps {
   name: string;
@@ -11,7 +14,7 @@ interface ProductItemProps {
 // export ProductItem component
 const ProductItem: FC<ProductItemProps> = ({name, quantity}): JSX.Element => {
   return (
-    <View>
+    <View style={globalStyles.mainView}>
       <Text>{name.length > 7 ? name.substring(0, 20) + '...' : name}</Text>
       <Text style={{alignSelf: 'flex-end'}}>x ({quantity})</Text>
     </View>
