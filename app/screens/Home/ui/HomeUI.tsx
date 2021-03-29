@@ -4,6 +4,9 @@ import {Text, View, FlatList} from 'react-native';
 
 // import components
 import ProductComponent from '../../../components/Product';
+import ProductsList from '../../../components/ProductsList';
+
+// import screens
 import ProductDetailsScreen from '../../ProductDetails/ui/ProductDetailsUI';
 
 // import navigation
@@ -24,30 +27,7 @@ const HomeUI: FC = (): JSX.Element => {
   const navigation = useNavigation();
   return (
     <View style={globalStyles.mainView}>
-      <FlatList
-        numColumns={5}
-        initialNumToRender={5}
-        data={DATA}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}) => (
-          <ProductComponent
-            title={item.title}
-            image={item.image}
-            price={item.price}
-            onPress={() => {
-              console.log('Pressed!');
-            }}
-            onLongPress={() => {
-              navigation.navigate('ProductDetails', {
-                image: item.image,
-                title: item.title,
-                description: item.title,
-                price: item.price,
-              });
-            }}
-          />
-        )}
-      />
+      <ProductsList data={DATA} />
       {/* <ProductDetailsScreen image={DATA[0].image} title={DATA[0].title} description={DATA[0].title} price={DATA[0].price} /> */}
     </View>
   );

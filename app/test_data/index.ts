@@ -1,11 +1,11 @@
 // define data object type
-type DataObject = {
+export type DataObject = {
   title: string;
   image: string;
   price: string;
 };
 // define data type
-type DataType = DataObject[];
+export type DataType = DataObject[];
 // export sample data
 export const DATA: DataType = [
   {
