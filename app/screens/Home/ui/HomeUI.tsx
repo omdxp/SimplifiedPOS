@@ -3,7 +3,8 @@ import React, {FC} from 'react';
 import {View} from 'react-native';
 
 // import components
-import ProductsList from '../../../components/ProductsList';
+import ProductsListComponent from '../../../components/ProductsList';
+import CartComponent from '../../../components/Cart';
 
 // import global styles
 import globalStyles from '../../../styles';
@@ -18,7 +19,8 @@ import {DATA} from '../../../test_data';
 const HomeUI: FC = (): JSX.Element => {
   return (
     <View style={globalStyles.mainView}>
-      <ProductsList data={DATA} />
+      {/* <ProductsListComponent data={DATA} /> */}
+      <CartComponent />
     </View>
   );
 };
