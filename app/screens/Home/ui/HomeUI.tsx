@@ -1,6 +1,6 @@
 
 // import react native
-import React from 'react';
+import React, { FC } from 'react';
 import { Text, View, FlatList } from 'react-native';
 
 // import components
@@ -16,15 +16,17 @@ import { DATA } from '../../../test_data';
 // import {} from '../functions';
 
 // export Home UI
-export default function HomeUI() {
+const HomeUI: FC = (): JSX.Element => {
   return (
     <View style={globalStyles.mainView}>
       <FlatList
-        horizontal
+        numColumns={5}
+        initialNumToRender={5}
         data={DATA}
-        ItemSeparatorComponent={()=><View style={globalStyles.spaceView} />}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} />}
       />
     </View>
   );
 }
+export default HomeUI;

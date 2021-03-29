@@ -8,6 +8,7 @@ const globalStyles = StyleSheet.create({
     padding: 10,
   },
   productView: {
+    margin: 10,
     borderRadius: 20,
     width: 200,
   },
