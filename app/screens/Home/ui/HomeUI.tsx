@@ -35,6 +35,9 @@ const HomeUI: FC = (): JSX.Element => {
             image={item.image}
             price={item.price}
             onPress={() => {
+              console.log('Pressed!');
+            }}
+            onLongPress={() => {
               navigation.navigate('ProductDetails', {
                 image: item.image,
                 title: item.title,
