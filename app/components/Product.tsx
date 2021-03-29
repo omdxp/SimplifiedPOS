@@ -1,7 +1,7 @@
 
 // import react native
 import React, { FC } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity, GestureResponderEvent } from 'react-native';
 
 // import global styles
 import globalStyles from '../styles';
@@ -10,13 +10,14 @@ import globalStyles from '../styles';
 interface ProductProps {
   title: string,
   image: string,
-  price: string
+  price: string,
+  onPress: (event: GestureResponderEvent)=> void
 }
 
 // export Product component
-const Product: FC<ProductProps> = ({title, image,  price}): JSX.Element => {
+const Product: FC<ProductProps> = ({title, image,  price, onPress}): JSX.Element => {
   return (
-    <View style={globalStyles.productView}>
+    <TouchableOpacity style={globalStyles.productView} onPress={onPress}>
       <Image
           source={{uri: image}}
           style={globalStyles.productImage}
@@ -25,7 +26,7 @@ const Product: FC<ProductProps> = ({title, image,  price}): JSX.Element => {
         <Text style={globalStyles.productTitleText}>{ title.length > 10 ? title.substring(0, 14) + '...' : title }</Text>
         <Text style={globalStyles.productPriceText}>{ price }</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 export default Product;

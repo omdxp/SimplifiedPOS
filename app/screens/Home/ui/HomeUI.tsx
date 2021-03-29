@@ -24,7 +24,8 @@ const HomeUI: FC = (): JSX.Element => {
         initialNumToRender={5}
         data={DATA}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} />}
+        renderItem={({item})=> <ProductComponent title={item.title} image={item.image} price={item.price} onPress={()=>{console.log('pressed!');
+        }} />}
       />
     </View>
   );
