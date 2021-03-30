@@ -7,6 +7,7 @@ import ProductItemComponent from '../components/ProductItem';
 
 // import redux
 import {useSelector} from 'react-redux';
+import {CartState} from '../redux/interfaces';
 
 // import global styles
 import globalStyles from '../styles';
@@ -15,8 +16,7 @@ import {Colors} from '../styles/colors';
 // export Cart component
 const Cart: FC = (): JSX.Element => {
   // use cart selector
-  const state = useSelector(state => state.CartReducer);
-  console.log('Cart component:', state);
+  const state: CartState = useSelector(state => state.CartReducer);
 
   return (
     <View style={globalStyles.cartView}>

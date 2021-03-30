@@ -11,7 +11,8 @@ import globalStyles from '../../../styles';
 
 // import redux
 import {addProductToProducts} from '../../../redux/actions';
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {ProductsState} from '../../../redux/interfaces';
 
 // import test data
 import {DATA} from '../../../test_data';
@@ -21,17 +22,19 @@ import {DATA} from '../../../test_data';
 
 // export Home UI
 const HomeUI: FC = (): JSX.Element => {
-  // use dispatch
-  const dispatch = useDispatch();
   // save products to products reducer at the begining
   useEffect(() => {
     DATA.forEach(element => dispatch(addProductToProducts(element)));
   }, []);
+  // use dispatch
+  const dispatch = useDispatch();
+  // use selector
+  const state: ProductsState = useSelector(state => state.ProductsReducer);
   return (
     <View style={globalStyles.mainView}>
       <View style={globalStyles.rowView}>
         <View style={{flex: 3}}>
-          <ProductsListComponent data={DATA} />
+          <ProductsListComponent data={state.productsList} />
         </View>
         <View style={{flex: 1}}>
           <CartComponent />

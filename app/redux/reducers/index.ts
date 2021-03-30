@@ -25,6 +25,8 @@ export const CartReducer = (
   switch (action.type) {
     // this is for adding a product to cart
     case ADD_PRODUCT_TO_CART:
+      console.log('cart state:', state);
+
       // check if element already exists in the cart
       if (state.productsList.includes(action.payload)) {
         const index: number = state.productsList.findIndex(
@@ -62,8 +64,17 @@ export const ProductsReducer = (
   switch (action.type) {
     // this is for adding a product to products
     case ADD_PRODUCT_TO_PRODUCTS:
+      // check if item is already added to update only the quantity
+      const index: number = state.productsList.findIndex(
+        element => element.title === action.payload.title,
+      );
+      if (index === -1) {
+        state.productsList = [action.payload, ...state.productsList];
+      } else {
+        state.productsList[index].quantity += 1;
+      }
       return {
-        productsList: [action.payload, ...state.productsList],
+        ...state,
       };
     // this is for deleting a product from products
     case DELETE_PRODUCT_FROM_PRODUCTS:

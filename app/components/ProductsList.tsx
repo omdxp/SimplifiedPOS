@@ -12,8 +12,9 @@ import ProductComponent from './Product';
 import {DataType} from '../test_data';
 
 // import redux
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {addProductToCart} from '../redux/actions';
+import {CartState} from '../redux/interfaces';
 
 // define products list props interface
 interface ProductsListProps {
@@ -24,6 +25,9 @@ interface ProductsListProps {
 const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   // use disptach
   const dispatch = useDispatch();
+
+  // use cart selector
+  const state: CartState = useSelector(state => state.CartReducer);
 
   // use navigation
   const navigation = useNavigation();
@@ -40,7 +44,20 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           image={item.image}
           price={item.price}
           onPress={() => {
-            dispatch(addProductToCart(item));
+            const cartItem = item;
+            // check if element is already in cart list to update quantity
+            if (state.productsList.length > 0) {
+              state.productsList.forEach(element => {
+                if (element.title === item.title) {
+                  dispatch(addProductToCart(cartItem));
+                } else {
+                  cartItem.quantity = 1;
+                  dispatch(addProductToCart(cartItem));
+                }
+              });
+            } else {
+              dispatch(addProductToCart(cartItem));
+            }
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {
