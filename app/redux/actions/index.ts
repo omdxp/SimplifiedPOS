@@ -1,8 +1,14 @@
 // import constants
-import {ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_CART} from '../constants';
+import {
+  ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_TO_PRODUCTS,
+  DELETE_PRODUCT_FROM_CART,
+  DELETE_PRODUCT_FROM_PRODUCTS,
+} from '../constants';
 
 // import data type
 import {DataObject} from '../../test_data';
+import {CartAction, ProductsAction} from '../interfaces';
 
 // Cart actions
 /**
@@ -10,7 +16,7 @@ import {DataObject} from '../../test_data';
  * @param product product to be added to cart reducer.
  * @returns object to be used in cart reducer,
  */
-export const addProductToCart = (product: DataObject) => ({
+export const addProductToCart = (product: DataObject): CartAction => ({
   type: ADD_PRODUCT_TO_CART,
   payload: product,
 });
@@ -19,7 +25,29 @@ export const addProductToCart = (product: DataObject) => ({
  * @param product product to be deleted from cart reducer.
  * @returns object to be used in cart reducer.
  */
-export const deleteProductFromCart = (product: DataObject) => ({
+export const deleteProductFromCart = (product: DataObject): CartAction => ({
   type: DELETE_PRODUCT_FROM_CART,
+  payload: product,
+});
+
+// Products actions
+/**
+ * Add Product To Products
+ * @param product product to be added to products reducer.
+ * @returns object to be used in products reducer.
+ */
+export const addProductToProducts = (product: DataObject): ProductsAction => ({
+  type: ADD_PRODUCT_TO_PRODUCTS,
+  payload: product,
+});
+/**
+ * Delete Product From Products
+ * @param product product to be deleted from products reducer.
+ * @returns object to be used in products reducer.
+ */
+export const deleteProductFromProducts = (
+  product: DataObject,
+): ProductsAction => ({
+  type: DELETE_PRODUCT_FROM_PRODUCTS,
   payload: product,
 });

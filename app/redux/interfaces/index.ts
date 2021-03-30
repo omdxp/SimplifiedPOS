@@ -12,3 +12,14 @@ export interface CartAction extends AnyAction {
 export interface CartState {
   productsList: DataType;
 }
+
+// products actions interface
+export interface ProductsAction extends AnyAction {
+  type: string;
+  payload: DataObject;
+}
+
+// products state interface
+export interface ProductsState {
+  productsList: DataType;
+}

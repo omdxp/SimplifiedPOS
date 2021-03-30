@@ -1,8 +1,18 @@
 // import interfaces
-import {CartAction, CartState} from '../interfaces';
+import {
+  CartAction,
+  CartState,
+  ProductsAction,
+  ProductsState,
+} from '../interfaces';
 
 // import constants
-import {ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_CART} from '../constants';
+import {
+  ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_TO_PRODUCTS,
+  DELETE_PRODUCT_FROM_CART,
+  DELETE_PRODUCT_FROM_PRODUCTS,
+} from '../constants';
 
 // Cart reducer
 export const initialCartState: CartState = {
@@ -11,7 +21,7 @@ export const initialCartState: CartState = {
 export const CartReducer = (
   state: CartState = initialCartState,
   action: CartAction,
-) => {
+): CartState => {
   switch (action.type) {
     // this is for adding a product to cart
     case ADD_PRODUCT_TO_CART:
@@ -32,7 +42,37 @@ export const CartReducer = (
       state.productsList = state.productsList.filter(
         element => element != action.payload,
       );
+      return {
+        ...state,
+      };
+    // default case
+    default:
       return state;
+  }
+};
+
+// Products reducer
+export const initialProductsState: ProductsState = {
+  productsList: [],
+};
+export const ProductsReducer = (
+  state: ProductsState,
+  action: ProductsAction,
+): ProductsState => {
+  switch (action.type) {
+    // this is for adding a product to products
+    case ADD_PRODUCT_TO_PRODUCTS:
+      return {
+        productsList: [action.payload, ...state.productsList],
+      };
+    // this is for deleting a product from products
+    case DELETE_PRODUCT_FROM_PRODUCTS:
+      state.productsList = state.productsList.filter(
+        element => element != action.payload,
+      );
+      return {
+        ...state,
+      };
     // default case
     default:
       return state;
