@@ -1,5 +1,5 @@
 // import react native
-import React, {FC, useReducer} from 'react';
+import React, {FC} from 'react';
 import {Text, View, FlatList} from 'react-native';
 
 // import components
@@ -24,7 +24,11 @@ const Cart: FC = (): JSX.Element => {
       <FlatList
         data={state.productsList}
         renderItem={({item}) => (
-          <ProductItemComponent name={item.title} quantity={item.quantity} />
+          <ProductItemComponent
+            name={item.title}
+            quantity={item.quantity}
+            onPress={() => console.log('Pressed!')}
+          />
         )}
         keyExtractor={(_, index) => index.toString()}
         ItemSeparatorComponent={() => (

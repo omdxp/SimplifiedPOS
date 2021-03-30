@@ -1,5 +1,5 @@
 // import react native
-import React, {FC, useReducer} from 'react';
+import React, {FC} from 'react';
 import {FlatList} from 'react-native';
 
 // import navigation

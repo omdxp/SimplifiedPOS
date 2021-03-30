@@ -1,6 +1,6 @@
 // import react native
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {GestureResponderEvent, Text, TouchableOpacity} from 'react-native';
 
 // import global styles
 import globalStyles from '../styles';
@@ -9,15 +9,20 @@ import globalStyles from '../styles';
 interface ProductItemProps {
   name: string;
   quantity: number;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
 // export ProductItem component
-const ProductItem: FC<ProductItemProps> = ({name, quantity}): JSX.Element => {
+const ProductItem: FC<ProductItemProps> = ({
+  name,
+  quantity,
+  onPress,
+}): JSX.Element => {
   return (
-    <View style={globalStyles.mainView}>
+    <TouchableOpacity style={globalStyles.mainView} onPress={onPress}>
       <Text>{name.length > 7 ? name.substring(0, 20) + '...' : name}</Text>
       <Text style={{alignSelf: 'flex-end'}}>x ({quantity})</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 export default ProductItem;

@@ -41,7 +41,7 @@ const Product: FC<ProductProps> = ({
           {title.length > 10 ? title.substring(0, 14) + '...' : title}
         </Text>
         <Text style={globalStyles.productPriceText}>
-          {price} x {quantity}
+          {price} x ({quantity})
         </Text>
       </View>
     </TouchableOpacity>
