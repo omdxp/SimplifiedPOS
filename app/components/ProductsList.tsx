@@ -85,7 +85,7 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
             navigation.navigate('ProductDetails', {
               image: item.image,
               title: item.title,
-              description: item.title,
+              description: item.description,
               price: item.price,
               quantity: item.quantity,
             });

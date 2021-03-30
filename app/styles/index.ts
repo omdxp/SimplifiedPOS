@@ -85,5 +85,9 @@ const globalStyles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 30,
   },
+  cartPayButtonText: {
+    fontSize: 30,
+    color: 'white',
+  },
 });
 export default globalStyles;

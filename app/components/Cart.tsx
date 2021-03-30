@@ -60,7 +60,7 @@ const Cart: FC = (): JSX.Element => {
         )}
       />
       <TouchableOpacity style={globalStyles.cartPayButtonView}>
-        <Text style={{fontSize: 30, color: 'white'}}>Pay</Text>
+        <Text style={globalStyles.cartPayButtonText}>Pay</Text>
       </TouchableOpacity>
     </View>
   );
