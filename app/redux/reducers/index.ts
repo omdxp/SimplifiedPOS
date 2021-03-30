@@ -89,11 +89,15 @@ export const ProductsReducer = (
     // this is for updating the quantity of a given product
     case UPDATE_PRODUCT_QUANTITY: {
       // check if item is in products list
-      const index: number = state.productsList.indexOf(action.payload);
+      const index: number = state.productsList.findIndex(
+        element => element.title === action.payload.title,
+      );
       if (index === -1) {
         return state;
       } else {
-        state.productsList[index].quantity = action.payload.quantity;
+        // check if quantity is negative
+        state.productsList[index].quantity =
+          action.payload.quantity <= 0 ? 0 : action.payload.quantity;
         return {
           ...state,
         };
