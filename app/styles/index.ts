@@ -69,6 +69,7 @@ const globalStyles = StyleSheet.create({
     padding: 5,
     backgroundColor: Colors.white,
     height: '100%',
+    borderRadius: 30,
   },
   cartTitleText: {
     fontSize: 30,
