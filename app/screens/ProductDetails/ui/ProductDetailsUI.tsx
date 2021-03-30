@@ -14,11 +14,18 @@ interface ProductDetailsProps {
   title: string;
   description: string;
   price: string;
+  quantity: number;
 }
 
 // export ProductDetails UI
 const ProductDetailsUI: FC = ({route}): JSX.Element => {
-  const {image, title, description, price}: ProductDetailsProps = route.params;
+  const {
+    image,
+    title,
+    description,
+    price,
+    quantity,
+  }: ProductDetailsProps = route.params;
   return (
     <View style={globalStyles.mainView}>
       <Image source={{uri: image}} style={globalStyles.productDetailsImage} />
@@ -26,6 +33,9 @@ const ProductDetailsUI: FC = ({route}): JSX.Element => {
         <Text style={globalStyles.productDetailsTitleText}>{title}</Text>
         <Text style={globalStyles.productDetailsDescriptionText}>
           {description}
+        </Text>
+        <Text style={globalStyles.productDetailsPriceText}>
+          Quantity: {quantity}
         </Text>
         <Text style={globalStyles.productDetailsPriceText}>{price}</Text>
       </ScrollView>
