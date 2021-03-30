@@ -6,8 +6,9 @@ import {Text, View, FlatList} from 'react-native';
 import ProductItemComponent from '../components/ProductItem';
 
 // import redux
-import {useSelector} from 'react-redux';
-import {CartState} from '../redux/interfaces';
+import {useSelector, useDispatch} from 'react-redux';
+import {CartState, ProductsState} from '../redux/interfaces';
+import {deleteProductFromCart, updateProductQuantity} from '../redux/actions';
 
 // import global styles
 import globalStyles from '../styles';
@@ -16,18 +17,39 @@ import {Colors} from '../styles/colors';
 // export Cart component
 const Cart: FC = (): JSX.Element => {
   // use cart selector
-  const state: CartState = useSelector(state => state.CartReducer);
+  const cartState: CartState = useSelector(state => state.CartReducer);
+
+  // use products selector
+  const productsState: ProductsState = useSelector(
+    state => state.ProductsReducer,
+  );
+
+  // use dispatch
+  const dispatch = useDispatch();
 
   return (
     <View style={globalStyles.cartView}>
       <Text style={globalStyles.cartTitleText}>My Cart</Text>
       <FlatList
-        data={state.productsList}
+        data={cartState.productsList}
         renderItem={({item}) => (
           <ProductItemComponent
             name={item.title}
             quantity={item.quantity}
-            onPress={() => console.log('Pressed!')}
+            onPress={() => {
+              // get quantity of current product in products reducer
+              const index: number = productsState.productsList.findIndex(
+                element => element.title === item.title,
+              );
+              dispatch(deleteProductFromCart(item));
+              dispatch(
+                updateProductQuantity({
+                  ...item,
+                  quantity:
+                    productsState.productsList[index].quantity + item.quantity,
+                }),
+              );
+            }}
           />
         )}
         keyExtractor={(_, index) => index.toString()}
