@@ -13,7 +13,7 @@ import {DataType} from '../test_data';
 
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
-import {addProductToCart} from '../redux/actions';
+import {addProductToCart, updateProductQuantity} from '../redux/actions';
 import {CartState} from '../redux/interfaces';
 
 // define products list props interface
@@ -49,12 +49,16 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
             const index: number = state.productsList.findIndex(
               element => element.title === cartItem.title,
             );
+            // add to cart
             if (index === -1) {
               cartItem.quantity = 1;
               dispatch(addProductToCart(cartItem));
             } else {
               dispatch(addProductToCart(cartItem));
             }
+            // update product quantity
+            item.quantity -= 1;
+            dispatch(updateProductQuantity(item));
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {

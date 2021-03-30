@@ -4,6 +4,7 @@ import {
   ADD_PRODUCT_TO_PRODUCTS,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_PRODUCTS,
+  UPDATE_PRODUCT_QUANTITY,
 } from '../constants';
 
 // import data type
@@ -49,5 +50,14 @@ export const deleteProductFromProducts = (
   product: DataObject,
 ): ProductsAction => ({
   type: DELETE_PRODUCT_FROM_PRODUCTS,
+  payload: product,
+});
+/**
+ * Update Produce Qunatity
+ * @param product product used to update its quantity.
+ * @returns object to be used in products reducer.
+ */
+export const updateProductQuantity = (product: DataObject): ProductsAction => ({
+  type: UPDATE_PRODUCT_QUANTITY,
   payload: product,
 });

@@ -12,6 +12,7 @@ import {
   ADD_PRODUCT_TO_PRODUCTS,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_PRODUCTS,
+  UPDATE_PRODUCT_QUANTITY,
 } from '../constants';
 
 // Cart reducer
@@ -38,13 +39,14 @@ export const CartReducer = (
         ...state,
       };
     // this is for deleting a product from cart
-    case DELETE_PRODUCT_FROM_CART:
+    case DELETE_PRODUCT_FROM_CART: {
       state.productsList = state.productsList.filter(
         element => element != action.payload,
       );
       return {
         ...state,
       };
+    }
     // default case
     default:
       return state;
@@ -61,7 +63,7 @@ export const ProductsReducer = (
 ): ProductsState => {
   switch (action.type) {
     // this is for adding a product to products
-    case ADD_PRODUCT_TO_PRODUCTS:
+    case ADD_PRODUCT_TO_PRODUCTS: {
       // check if item is already added to update only the quantity
       const index: number = state.productsList.findIndex(
         element => element.title === action.payload.title,
@@ -74,14 +76,25 @@ export const ProductsReducer = (
       return {
         ...state,
       };
+    }
     // this is for deleting a product from products
-    case DELETE_PRODUCT_FROM_PRODUCTS:
+    case DELETE_PRODUCT_FROM_PRODUCTS: {
       state.productsList = state.productsList.filter(
         element => element != action.payload,
       );
       return {
         ...state,
       };
+    }
+    // this is for updating the quantity of a given product
+    case UPDATE_PRODUCT_QUANTITY: {
+      // find index of the product
+      const index: number = state.productsList.indexOf(action.payload);
+      state.productsList[index].quantity = action.payload.quantity;
+      return {
+        ...state,
+      };
+    }
     // default case
     default:
       return state;
