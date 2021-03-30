@@ -15,8 +15,17 @@ export const CartReducer = (
   switch (action.type) {
     // this is for adding a product to cart
     case ADD_PRODUCT_TO_CART:
+      // check if element already exists in the cart
+      if (state.productsList.includes(action.payload)) {
+        const index: number = state.productsList.findIndex(
+          element => element.title === action.payload.title,
+        );
+        state.productsList[index].quantity += 1;
+      } else {
+        state.productsList = [action.payload, ...state.productsList];
+      }
       return {
-        productsList: [action.payload, ...state.productsList],
+        ...state,
       };
     // this is for deleting a product from cart
     case DELETE_PRODUCT_FROM_CART:
