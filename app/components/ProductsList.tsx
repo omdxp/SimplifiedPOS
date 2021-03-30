@@ -45,16 +45,13 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           price={item.price}
           onPress={() => {
             const cartItem = item;
-            // check if element is already in cart list to update quantity
-            if (state.productsList.length > 0) {
-              state.productsList.forEach(element => {
-                if (element.title === item.title) {
-                  dispatch(addProductToCart(cartItem));
-                } else {
-                  cartItem.quantity = 1;
-                  dispatch(addProductToCart(cartItem));
-                }
-              });
+            // check if item is already in cart list
+            const index: number = state.productsList.findIndex(
+              element => element.title === cartItem.title,
+            );
+            if (index === -1) {
+              cartItem.quantity = 1;
+              dispatch(addProductToCart(cartItem));
             } else {
               dispatch(addProductToCart(cartItem));
             }
