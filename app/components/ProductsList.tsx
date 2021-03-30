@@ -43,22 +43,30 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           title={item.title}
           image={item.image}
           price={item.price}
+          quantity={item.quantity}
           onPress={() => {
-            const cartItem = item;
             // check if item is already in cart list
             const index: number = state.productsList.findIndex(
-              element => element.title === cartItem.title,
+              element => element.title === item.title,
             );
             // add to cart
             if (index === -1) {
-              cartItem.quantity = 1;
-              dispatch(addProductToCart(cartItem));
+              dispatch(
+                addProductToCart({
+                  ...item,
+                  quantity: 1,
+                }),
+              );
             } else {
-              dispatch(addProductToCart(cartItem));
+              dispatch(addProductToCart(item));
             }
             // update product quantity
-            item.quantity -= 1;
-            dispatch(updateProductQuantity(item));
+            dispatch(
+              updateProductQuantity({
+                ...item,
+                quantity: item.quantity - 1,
+              }),
+            );
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {

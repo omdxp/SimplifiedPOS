@@ -16,6 +16,7 @@ interface ProductProps {
   title: string;
   image: string;
   price: string;
+  quantity: number;
   onPress: (event: GestureResponderEvent) => void;
   onLongPress: (event: GestureResponderEvent) => void;
 }
@@ -25,6 +26,7 @@ const Product: FC<ProductProps> = ({
   title,
   image,
   price,
+  quantity,
   onPress,
   onLongPress,
 }): JSX.Element => {
@@ -38,7 +40,9 @@ const Product: FC<ProductProps> = ({
         <Text style={globalStyles.productTitleText}>
           {title.length > 10 ? title.substring(0, 14) + '...' : title}
         </Text>
-        <Text style={globalStyles.productPriceText}>{price}</Text>
+        <Text style={globalStyles.productPriceText}>
+          {price} x {quantity}
+        </Text>
       </View>
     </TouchableOpacity>
   );
