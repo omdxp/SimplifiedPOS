@@ -19,7 +19,7 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // config persist store
-const persistConfig = {
+const persistConfig: PersistConfig<any> = {
   key: 'root',
   storage: AsyncStorage,
   whitelist: ['CartReducer', 'ProductsReducer'],

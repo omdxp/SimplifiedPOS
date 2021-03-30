@@ -56,7 +56,7 @@ export const initialProductsState: ProductsState = {
   productsList: [],
 };
 export const ProductsReducer = (
-  state: ProductsState,
+  state: ProductsState = initialProductsState,
   action: ProductsAction,
 ): ProductsState => {
   switch (action.type) {
