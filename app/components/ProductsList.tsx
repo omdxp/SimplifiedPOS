@@ -14,7 +14,7 @@ import {DataType} from '../test_data';
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
 import {addProductToCart, updateProductQuantity} from '../redux/actions';
-import {CartState} from '../redux/interfaces';
+import {CartState, ProductsState} from '../redux/interfaces';
 
 // define products list props interface
 interface ProductsListProps {
@@ -27,7 +27,12 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   const dispatch = useDispatch();
 
   // use cart selector
-  const state: CartState = useSelector(state => state.CartReducer);
+  const cartState: CartState = useSelector(state => state.CartReducer);
+
+  // use products selector
+  const productsState: ProductsState = useSelector(
+    state => state.ProductsReducer,
+  );
 
   // use navigation
   const navigation = useNavigation();
@@ -46,27 +51,35 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           quantity={item.quantity}
           onPress={() => {
             // check if item is already in cart list
-            const index: number = state.productsList.findIndex(
+            const index: number = cartState.productsList.findIndex(
               element => element.title === item.title,
             );
-            // add to cart
-            if (index === -1) {
+            // check for quantity of current product in products reducer
+            const productIndex: number = productsState.productsList.findIndex(
+              element => element.title === item.title,
+            );
+            if (productsState.productsList[productIndex].quantity === 0) {
+              return;
+            } else {
+              // add to cart
+              if (index === -1) {
+                dispatch(
+                  addProductToCart({
+                    ...item,
+                    quantity: 1,
+                  }),
+                );
+              } else {
+                dispatch(addProductToCart(item));
+              }
+              // update product quantity
               dispatch(
-                addProductToCart({
+                updateProductQuantity({
                   ...item,
-                  quantity: 1,
+                  quantity: item.quantity - 1,
                 }),
               );
-            } else {
-              dispatch(addProductToCart(item));
             }
-            // update product quantity
-            dispatch(
-              updateProductQuantity({
-                ...item,
-                quantity: item.quantity - 1,
-              }),
-            );
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {
