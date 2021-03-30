@@ -75,5 +75,14 @@ const globalStyles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
   },
+  cartPayButtonView: {
+    width: '100%',
+    alignSelf: 'flex-end',
+    backgroundColor: Colors.mainColor,
+    height: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 30,
+  },
 });
 export default globalStyles;

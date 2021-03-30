@@ -1,6 +1,6 @@
 // import react native
 import React, {FC} from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 
 // import components
 import ProductItemComponent from '../components/ProductItem';
@@ -59,6 +59,9 @@ const Cart: FC = (): JSX.Element => {
           />
         )}
       />
+      <TouchableOpacity style={globalStyles.cartPayButtonView}>
+        <Text style={{fontSize: 30, color: 'white'}}>Pay</Text>
+      </TouchableOpacity>
     </View>
   );
 };
