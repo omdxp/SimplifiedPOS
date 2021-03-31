@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import ProductComponent from './Product';
 
 // import data type
-import {DataType} from '../test_data';
+import {DataObject, DataType} from '../test_data';
 
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -37,6 +37,40 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   // use navigation
   const navigation = useNavigation();
 
+  // add product to cart function
+  const addProductToMyCart = (item: DataObject): void => {
+    // check if item is already in cart list
+    const index: number = cartState.productsList.findIndex(
+      element => element.title === item.title,
+    );
+    // check for quantity of current product in products reducer
+    const productIndex: number = productsState.productsList.findIndex(
+      element => element.title === item.title,
+    );
+    if (productsState.productsList[productIndex].quantity === 0) {
+      return;
+    } else {
+      // add to cart
+      if (index === -1) {
+        dispatch(
+          addProductToCart({
+            ...item,
+            quantity: 1,
+          }),
+        );
+      } else {
+        dispatch(addProductToCart(item));
+      }
+      // update product quantity
+      dispatch(
+        updateProductQuantity({
+          ...item,
+          quantity: item.quantity - 1,
+        }),
+      );
+    }
+  };
+
   return (
     <FlatList
       numColumns={4}
@@ -50,36 +84,7 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
           price={item.price}
           quantity={item.quantity}
           onPress={() => {
-            // check if item is already in cart list
-            const index: number = cartState.productsList.findIndex(
-              element => element.title === item.title,
-            );
-            // check for quantity of current product in products reducer
-            const productIndex: number = productsState.productsList.findIndex(
-              element => element.title === item.title,
-            );
-            if (productsState.productsList[productIndex].quantity === 0) {
-              return;
-            } else {
-              // add to cart
-              if (index === -1) {
-                dispatch(
-                  addProductToCart({
-                    ...item,
-                    quantity: 1,
-                  }),
-                );
-              } else {
-                dispatch(addProductToCart(item));
-              }
-              // update product quantity
-              dispatch(
-                updateProductQuantity({
-                  ...item,
-                  quantity: item.quantity - 1,
-                }),
-              );
-            }
+            addProductToMyCart(item);
           }}
           onLongPress={() => {
             navigation.navigate('ProductDetails', {

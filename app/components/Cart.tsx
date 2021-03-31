@@ -14,6 +14,9 @@ import {deleteProductFromCart, updateProductQuantity} from '../redux/actions';
 import globalStyles from '../styles';
 import {Colors} from '../styles/colors';
 
+// import data types
+import {DataObject} from '../test_data';
+
 // export Cart component
 const Cart: FC = (): JSX.Element => {
   // use cart selector
@@ -27,6 +30,21 @@ const Cart: FC = (): JSX.Element => {
   // use dispatch
   const dispatch = useDispatch();
 
+  // delete product from cart function
+  const deleteProductFromMyCart = (item: DataObject): void => {
+    // get quantity of current product in products reducer
+    const index: number = productsState.productsList.findIndex(
+      element => element.title === item.title,
+    );
+    dispatch(deleteProductFromCart(item));
+    dispatch(
+      updateProductQuantity({
+        ...item,
+        quantity: productsState.productsList[index].quantity + item.quantity,
+      }),
+    );
+  };
+
   return (
     <View style={globalStyles.cartView}>
       <Text style={globalStyles.cartTitleText}>My Cart</Text>
@@ -37,18 +55,7 @@ const Cart: FC = (): JSX.Element => {
             name={item.title}
             quantity={item.quantity}
             onPress={() => {
-              // get quantity of current product in products reducer
-              const index: number = productsState.productsList.findIndex(
-                element => element.title === item.title,
-              );
-              dispatch(deleteProductFromCart(item));
-              dispatch(
-                updateProductQuantity({
-                  ...item,
-                  quantity:
-                    productsState.productsList[index].quantity + item.quantity,
-                }),
-              );
+              deleteProductFromMyCart(item);
             }}
           />
         )}
