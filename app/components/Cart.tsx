@@ -1,6 +1,12 @@
 // import react native
-import React, {FC, useEffect} from 'react';
-import {Text, View, FlatList, TouchableOpacity} from 'react-native';
+import React, {FC, useEffect, useState} from 'react';
+import {
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
 
 // import components
 import ProductItemComponent from '../components/ProductItem';
@@ -17,8 +23,13 @@ import {Colors} from '../styles/colors';
 // import data types
 import {DataObject} from '../test_data';
 
+// define cart props interface
+interface CartProps {
+  onPayPress: (event: GestureResponderEvent) => void;
+}
+
 // export Cart component
-const Cart: FC = (): JSX.Element => {
+const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
   // use cart selector
   const cartState: CartState = useSelector(state => state.CartReducer);
 
@@ -29,6 +40,16 @@ const Cart: FC = (): JSX.Element => {
 
   // use dispatch
   const dispatch = useDispatch();
+
+  // use pay disabled state
+  const [payDisabled, setPayDisabled] = useState(false);
+
+  // use effect when cart state is changing to check if pay should be disabled
+  useEffect(() => {
+    cartState.productsList.length === 0
+      ? setPayDisabled(true)
+      : setPayDisabled(false);
+  }, [cartState.productsList]);
 
   // delete product from cart function
   const deleteProductFromMyCart = (item: DataObject): void => {
@@ -66,7 +87,13 @@ const Cart: FC = (): JSX.Element => {
           />
         )}
       />
-      <TouchableOpacity style={globalStyles.cartPayButtonView}>
+      <TouchableOpacity
+        style={[
+          globalStyles.cartPayButtonView,
+          {backgroundColor: payDisabled ? Colors.lightGrey : Colors.mainColor},
+        ]}
+        onPress={onPayPress}
+        disabled={payDisabled}>
         <Text style={globalStyles.cartPayButtonText}>Pay</Text>
       </TouchableOpacity>
     </View>

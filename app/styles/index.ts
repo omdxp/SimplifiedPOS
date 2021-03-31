@@ -79,7 +79,6 @@ const globalStyles = StyleSheet.create({
   cartPayButtonView: {
     width: '100%',
     alignSelf: 'flex-end',
-    backgroundColor: Colors.mainColor,
     height: '10%',
     alignItems: 'center',
     justifyContent: 'center',
