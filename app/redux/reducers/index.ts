@@ -8,6 +8,7 @@ import {
 
 // import constants
 import {
+  ADD_PRODUCT_FROM_API,
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_PRODUCTS,
   ADD_PRODUCT_TO_PRODUCTS_REPLACED,
@@ -114,6 +115,19 @@ export const ProductsReducer = (
         state.productsList = [action.payload, ...state.productsList];
       } else {
         state.productsList[index] = action.payload;
+      }
+      return {
+        ...state,
+      };
+    }
+    // this is for adding a product to products from api
+    case ADD_PRODUCT_FROM_API: {
+      // check if item is already added to not replace it
+      const index: number = state.productsList.findIndex(
+        element => element.title === action.payload.title,
+      );
+      if (index === -1) {
+        state.productsList = [action.payload, ...state.productsList];
       }
       return {
         ...state,

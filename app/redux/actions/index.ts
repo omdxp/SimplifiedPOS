@@ -1,5 +1,6 @@
 // import constants
 import {
+  ADD_PRODUCT_FROM_API,
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_PRODUCTS,
   ADD_PRODUCT_TO_PRODUCTS_REPLACED,
@@ -71,5 +72,14 @@ export const addProductToProductsReplaced = (
   product: DataObject,
 ): ProductsAction => ({
   type: ADD_PRODUCT_TO_PRODUCTS_REPLACED,
+  payload: product,
+});
+/**
+ * Add Product From Api
+ * @param product product to be added to products from api.
+ * @returns object to be used in products reducer.
+ */
+export const addProductFromApi = (product: DataObject): ProductsAction => ({
+  type: ADD_PRODUCT_FROM_API,
   payload: product,
 });
