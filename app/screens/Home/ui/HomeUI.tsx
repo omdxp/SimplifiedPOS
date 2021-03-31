@@ -10,9 +10,12 @@ import CartComponent from '../../../components/Cart';
 import globalStyles from '../../../styles';
 
 // import redux
-import {addProductFromApi} from '../../../redux/actions';
+import {
+  addProductFromApi,
+  addTransactionToTransactions,
+} from '../../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import {ProductsState} from '../../../redux/interfaces';
+import {CartState, ProductsState, Transaction} from '../../../redux/interfaces';
 
 // import test data
 import {DATA} from '../../../test_data';
@@ -29,16 +32,30 @@ const HomeUI: FC = (): JSX.Element => {
   }, []);
   // use dispatch
   const dispatch = useDispatch();
-  // use selector
-  const state: ProductsState = useSelector(state => state.ProductsReducer);
+  // use products selector
+  const productState: ProductsState = useSelector(
+    state => state.ProductsReducer,
+  );
+  // use cart selector
+  const cartState: CartState = useSelector(state => state.CartReducer);
   return (
     <View style={globalStyles.mainView}>
       <View style={globalStyles.rowView}>
         <View style={{flex: 3}}>
-          <ProductsListComponent data={state.productsList} />
+          <ProductsListComponent data={productState.productsList} />
         </View>
         <View style={{flex: 1}}>
-          <CartComponent onPayPress={() => console.log('pressed')} />
+          <CartComponent
+            onPayPress={() => {
+              const transaction: Transaction = {
+                id: Date.now().toString(),
+                productsList: cartState.productsList,
+                synchronized: false,
+                refunded: false,
+              };
+              dispatch(addTransactionToTransactions(transaction));
+            }}
+          />
         </View>
       </View>
     </View>
