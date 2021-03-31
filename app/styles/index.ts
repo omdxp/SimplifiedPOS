@@ -26,6 +26,7 @@ const globalStyles = StyleSheet.create({
     height: 200,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    backgroundColor: Colors.white,
   },
   productTextView: {
     height: 70,
