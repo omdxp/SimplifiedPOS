@@ -88,6 +88,7 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
         )}
       />
       <TouchableOpacity
+        delayPressIn={0}
         style={[
           globalStyles.cartPayButtonView,
           {backgroundColor: payDisabled ? Colors.lightGrey : Colors.mainColor},

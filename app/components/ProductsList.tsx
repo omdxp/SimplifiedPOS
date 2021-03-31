@@ -77,26 +77,30 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
       initialNumToRender={4}
       data={data}
       keyExtractor={(_, index) => index.toString()}
-      renderItem={({item}) => (
-        <ProductComponent
-          title={item.title}
-          image={item.image}
-          price={item.price}
-          quantity={item.quantity}
-          onPress={() => {
-            addProductToMyCart(item);
-          }}
-          onLongPress={() => {
-            navigation.navigate('ProductDetails', {
-              image: item.image,
-              title: item.title,
-              description: item.description,
-              price: item.price,
-              quantity: item.quantity,
-            });
-          }}
-        />
-      )}
+      renderItem={({item}) => {
+        const productOutOfStock: boolean = item.quantity === 0;
+        return (
+          <ProductComponent
+            title={item.title}
+            image={item.image}
+            price={item.price}
+            quantity={item.quantity}
+            productOutOfStock={productOutOfStock}
+            onPress={() => {
+              addProductToMyCart(item);
+            }}
+            onLongPress={() => {
+              navigation.navigate('ProductDetails', {
+                image: item.image,
+                title: item.title,
+                description: item.description,
+                price: item.price,
+                quantity: item.quantity,
+              });
+            }}
+          />
+        );
+      }}
     />
   );
 };

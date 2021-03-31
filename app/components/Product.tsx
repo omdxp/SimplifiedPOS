@@ -10,6 +10,7 @@ import {
 
 // import global styles
 import globalStyles from '../styles';
+import {Colors} from '../styles/colors';
 
 // define product props interface
 interface ProductProps {
@@ -17,6 +18,7 @@ interface ProductProps {
   image: string;
   price: string;
   quantity: number;
+  productOutOfStock: boolean;
   onPress: (event: GestureResponderEvent) => void;
   onLongPress: (event: GestureResponderEvent) => void;
 }
@@ -27,16 +29,26 @@ const Product: FC<ProductProps> = ({
   image,
   price,
   quantity,
+  productOutOfStock,
   onPress,
   onLongPress,
 }): JSX.Element => {
   return (
     <TouchableOpacity
+      delayPressIn={0}
       style={globalStyles.productView}
       onPress={onPress}
       onLongPress={onLongPress}>
       <Image source={{uri: image}} style={globalStyles.productImage} />
-      <View style={globalStyles.productTextView}>
+      <View
+        style={[
+          globalStyles.productTextView,
+          {
+            backgroundColor: productOutOfStock
+              ? Colors.lightGrey
+              : Colors.mainColor,
+          },
+        ]}>
         <Text style={globalStyles.productTitleText}>
           {title.length > 10 ? title.substring(0, 14) + '...' : title}
         </Text>

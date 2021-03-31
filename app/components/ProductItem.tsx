@@ -19,7 +19,10 @@ const ProductItem: FC<ProductItemProps> = ({
   onPress,
 }): JSX.Element => {
   return (
-    <TouchableOpacity style={globalStyles.mainView} onPress={onPress}>
+    <TouchableOpacity
+      delayPressIn={0}
+      style={globalStyles.mainView}
+      onPress={onPress}>
       <Text>{name.length > 7 ? name.substring(0, 20) + '...' : name}</Text>
       <Text style={{alignSelf: 'flex-end'}}>x ({quantity})</Text>
     </TouchableOpacity>
