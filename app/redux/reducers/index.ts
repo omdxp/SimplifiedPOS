@@ -160,12 +160,19 @@ export const TransactionsReducer = (
   switch (action.type) {
     // this is for adding a transaction to transactions
     case ADD_TRANSACTION_TO_TRANSACTIONS: {
+      state.transactions = [action.payload, ...state.transactions];
       return {
         ...state,
       };
     }
     // this is for adding a refund to a transaction
     case ADD_REFUND_TO_TRANSACTION: {
+      // get transaction to be refunded
+      const index: number = state.transactions.findIndex(
+        element => element.id === action.payload.id,
+      );
+      // modify refunded property
+      state.transactions[index].refunded = true;
       return {
         ...state,
       };
