@@ -2,6 +2,7 @@
 import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_PRODUCTS,
+  ADD_PRODUCT_TO_PRODUCTS_REPLACED,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_PRODUCTS,
   UPDATE_PRODUCT_QUANTITY,
@@ -59,5 +60,16 @@ export const deleteProductFromProducts = (
  */
 export const updateProductQuantity = (product: DataObject): ProductsAction => ({
   type: UPDATE_PRODUCT_QUANTITY,
+  payload: product,
+});
+/**
+ * Add Product To Products Replaced
+ * @param product product to be added to products reducer and replaced if necessary.
+ * @returns object to be used in products reducer.
+ */
+export const addProductToProductsReplaced = (
+  product: DataObject,
+): ProductsAction => ({
+  type: ADD_PRODUCT_TO_PRODUCTS_REPLACED,
   payload: product,
 });

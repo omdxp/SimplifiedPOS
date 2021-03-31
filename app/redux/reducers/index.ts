@@ -10,6 +10,7 @@ import {
 import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_PRODUCTS,
+  ADD_PRODUCT_TO_PRODUCTS_REPLACED,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_PRODUCTS,
   UPDATE_PRODUCT_QUANTITY,
@@ -102,6 +103,21 @@ export const ProductsReducer = (
           ...state,
         };
       }
+    }
+    // this is for adding a product to products and replaced if necessary
+    case ADD_PRODUCT_TO_PRODUCTS_REPLACED: {
+      // check if item is already added to replace it
+      const index: number = state.productsList.findIndex(
+        element => element.title === action.payload.title,
+      );
+      if (index === -1) {
+        state.productsList = [action.payload, ...state.productsList];
+      } else {
+        state.productsList[index] = action.payload;
+      }
+      return {
+        ...state,
+      };
     }
     // default case
     default:

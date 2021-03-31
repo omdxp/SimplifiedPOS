@@ -10,7 +10,7 @@ import CartComponent from '../../../components/Cart';
 import globalStyles from '../../../styles';
 
 // import redux
-import {addProductToProducts} from '../../../redux/actions';
+import {addProductToProductsReplaced} from '../../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import {ProductsState} from '../../../redux/interfaces';
 
@@ -24,7 +24,7 @@ import {DATA} from '../../../test_data';
 const HomeUI: FC = (): JSX.Element => {
   // save products to products reducer at the begining
   useEffect(() => {
-    DATA.forEach(element => dispatch(addProductToProducts(element)));
+    DATA.forEach(element => dispatch(addProductToProductsReplaced(element)));
   }, []);
   // use dispatch
   const dispatch = useDispatch();
