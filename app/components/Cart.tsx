@@ -1,5 +1,5 @@
 // import react native
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 
 // import components
