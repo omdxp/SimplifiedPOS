@@ -4,13 +4,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 
 // import redux reducers
-import {CartReducer, ProductsReducer} from '../reducers';
+import {CartReducer, ProductsReducer, TransactionsReducer} from '../reducers';
 import {PersistConfig} from 'redux-persist/es/types';
 
 // define app reducers
 const appReducers = combineReducers({
   CartReducer,
   ProductsReducer,
+  TransactionsReducer,
 });
 
 // define root reducer
@@ -22,7 +23,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig: PersistConfig<any> = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['CartReducer', 'ProductsReducer'],
+  whitelist: ['CartReducer', 'ProductsReducer', 'TransactionsReducer'],
 };
 
 // define persisted reducer

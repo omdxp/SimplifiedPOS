@@ -4,6 +4,8 @@ import {
   CartState,
   ProductsAction,
   ProductsState,
+  TransactionsAction,
+  TransactionsState,
 } from '../interfaces';
 
 // import constants
@@ -12,12 +14,16 @@ import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_PRODUCTS,
   ADD_PRODUCT_TO_PRODUCTS_REPLACED,
+  ADD_REFUND_TO_TRANSACTION,
+  ADD_TRANSACTION_TO_TRANSACTIONS,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_PRODUCTS,
   UPDATE_PRODUCT_QUANTITY,
 } from '../constants';
 
-// Cart reducer
+/**
+ * Cart Reducer
+ */
 export const initialCartState: CartState = {
   productsList: [],
 };
@@ -55,7 +61,9 @@ export const CartReducer = (
   }
 };
 
-// Products reducer
+/**
+ * Products Reducer
+ */
 export const initialProductsState: ProductsState = {
   productsList: [],
 };
@@ -129,6 +137,35 @@ export const ProductsReducer = (
       if (index === -1) {
         state.productsList = [action.payload, ...state.productsList];
       }
+      return {
+        ...state,
+      };
+    }
+    // default case
+    default:
+      return state;
+  }
+};
+
+/**
+ * Transactions Reducer
+ */
+export const initialTransactionsState: TransactionsState = {
+  transactions: [],
+};
+export const TransactionsReducer = (
+  state: TransactionsState = initialTransactionsState,
+  action: TransactionsAction,
+): TransactionsState => {
+  switch (action.type) {
+    // this is for adding a transaction to transactions
+    case ADD_TRANSACTION_TO_TRANSACTIONS: {
+      return {
+        ...state,
+      };
+    }
+    // this is for adding a refund to a transaction
+    case ADD_REFUND_TO_TRANSACTION: {
       return {
         ...state,
       };
