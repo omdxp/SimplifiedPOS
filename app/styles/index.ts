@@ -86,7 +86,11 @@ const globalStyles = StyleSheet.create({
   },
   cartPayButtonText: {
     fontSize: 30,
-    color: 'white',
+    color: Colors.white,
+  },
+  cartTotalPriceText: {
+    fontSize: 25,
+    color: Colors.black,
   },
 });
 export default globalStyles;

@@ -24,6 +24,7 @@ import {DATA} from '../../../test_data';
 const HomeUI: FC = (): JSX.Element => {
   // save products to products reducer at the begining
   useEffect(() => {
+    // TODO: get data from real api
     DATA.forEach(element => dispatch(addProductFromApi(element)));
   }, []);
   // use dispatch

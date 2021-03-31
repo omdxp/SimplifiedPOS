@@ -66,6 +66,18 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
     );
   };
 
+  // calculate total price function
+  const calculateTotalPrice = (): number => {
+    // get prices from cart products
+    let totalPrice: number = 0;
+    cartState.productsList.forEach(element => {
+      for (let i = 0; i < element.quantity; i++) {
+        totalPrice += element.price;
+      }
+    });
+    return totalPrice;
+  };
+
   return (
     <View style={globalStyles.cartView}>
       <Text style={globalStyles.cartTitleText}>My Cart</Text>
@@ -87,6 +99,9 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
           />
         )}
       />
+      <Text style={globalStyles.cartTotalPriceText}>
+        Total: ${calculateTotalPrice()}
+      </Text>
       <TouchableOpacity
         delayPressIn={0}
         style={[

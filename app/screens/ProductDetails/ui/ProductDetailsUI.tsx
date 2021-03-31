@@ -37,7 +37,7 @@ const ProductDetailsUI: FC = ({route}): JSX.Element => {
         <Text style={globalStyles.productDetailsPriceText}>
           Quantity: {quantity}
         </Text>
-        <Text style={globalStyles.productDetailsPriceText}>{price}</Text>
+        <Text style={globalStyles.productDetailsPriceText}>${price}</Text>
       </ScrollView>
     </View>
   );
