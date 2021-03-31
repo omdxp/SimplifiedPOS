@@ -38,7 +38,7 @@ const HomeUI: FC = (): JSX.Element => {
           <ProductsListComponent data={state.productsList} />
         </View>
         <View style={{flex: 1}}>
-          <CartComponent />
+          <CartComponent onPayPress={() => console.log('pressed')} />
         </View>
       </View>
     </View>
