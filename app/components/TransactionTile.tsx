@@ -1,6 +1,11 @@
 // import react native
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
 
 // import global styles
 import globalStyles from '../styles';
@@ -12,6 +17,7 @@ interface TransactionTileProps {
   productsQuantity: number;
   synchronized: boolean;
   refunded: boolean;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
 // export TransactionTile component
@@ -20,9 +26,12 @@ const TransactionTile: FC<TransactionTileProps> = ({
   productsQuantity,
   synchronized,
   refunded,
+  onPress,
 }): JSX.Element => {
   return (
-    <View style={globalStyles.transactionTileView}>
+    <TouchableOpacity
+      style={globalStyles.transactionTileView}
+      onPress={onPress}>
       <Text style={globalStyles.transactionTileTitleText}>ID: {id}</Text>
       <Text style={globalStyles.transactionTileQuantityText}>
         Products Quantity: {productsQuantity}
@@ -45,7 +54,7 @@ const TransactionTile: FC<TransactionTileProps> = ({
           ]}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 export default TransactionTile;
