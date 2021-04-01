@@ -7,10 +7,15 @@ import {} from '../functions';
 
 // import redux
 import {useSelector} from 'react-redux';
+import {TransactionsState} from '../../../redux/interfaces';
+
+// import components
+import TransactionTileComponent from '../../../components/TransactionTile';
+import TransactionDetailsComponent from '../../../components/TransactionDetails';
 
 // import global styles
 import globalStyles from '../../../styles';
-import {TransactionsState} from '../../../redux/interfaces';
+import {Colors} from '../../../styles/colors';
 
 // export Transactions UI
 const TransactionsUI: FC = (): JSX.Element => {
@@ -22,7 +27,19 @@ const TransactionsUI: FC = (): JSX.Element => {
     <View style={globalStyles.mainView}>
       <FlatList
         data={transactionsState.transactions}
-        renderItem={({item}) => <Text>{item.id}</Text>}
+        renderItem={({item}) => (
+          <TransactionTileComponent
+            id={item.id}
+            productsQuantity={item.productsList.length}
+            synchronized={item.synchronized}
+            refunded={item.refunded}
+          />
+        )}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{borderBottomWidth: 1, borderBottomColor: Colors.lightGrey}}
+          />
+        )}
         keyExtractor={(_, index) => index.toString()}
       />
     </View>

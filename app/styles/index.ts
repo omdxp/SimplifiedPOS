@@ -10,7 +10,9 @@ const globalStyles = StyleSheet.create({
     padding: 10,
   },
   rowView: {
+    alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   spaceView: {
     margin: 10,
@@ -91,6 +93,21 @@ const globalStyles = StyleSheet.create({
   cartTotalPriceText: {
     fontSize: 25,
     color: Colors.black,
+  },
+  // transaction tile styles
+  transactionTileView: {
+    margin: 10,
+  },
+  transactionTileTitleText: {
+    fontSize: 20,
+  },
+  transactionTileQuantityText: {
+    fontSize: 18,
+  },
+  transactionTileIndicator: {
+    height: 20,
+    width: 20,
+    borderRadius: 20,
   },
 });
 export default globalStyles;

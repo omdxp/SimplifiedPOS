@@ -2,11 +2,49 @@
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
 
+// import global styles
+import globalStyles from '../styles';
+import {Colors} from '../styles/colors';
+
+// define tansaction tile props interface
+interface TransactionTileProps {
+  id: string;
+  productsQuantity: number;
+  synchronized: boolean;
+  refunded: boolean;
+}
+
 // export TransactionTile component
-const TransactionTile: FC = (): JSX.Element => {
+const TransactionTile: FC<TransactionTileProps> = ({
+  id,
+  productsQuantity,
+  synchronized,
+  refunded,
+}): JSX.Element => {
   return (
-    <View>
-      <Text>TransactionTile component created!</Text>
+    <View style={globalStyles.transactionTileView}>
+      <Text style={globalStyles.transactionTileTitleText}>ID: {id}</Text>
+      <Text style={globalStyles.transactionTileQuantityText}>
+        Products Quantity: {productsQuantity}
+      </Text>
+      <View style={globalStyles.rowView}>
+        <Text>Synchronized: </Text>
+        <View
+          style={[
+            globalStyles.transactionTileIndicator,
+            {backgroundColor: synchronized ? Colors.green : Colors.red},
+          ]}
+        />
+      </View>
+      <View style={globalStyles.rowView}>
+        <Text>Refunded: </Text>
+        <View
+          style={[
+            globalStyles.transactionTileIndicator,
+            {backgroundColor: refunded ? Colors.green : Colors.red},
+          ]}
+        />
+      </View>
     </View>
   );
 };
