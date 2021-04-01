@@ -13,6 +13,7 @@ import globalStyles from '../../../styles';
 import {
   addProductFromApi,
   addTransactionToTransactions,
+  deleteProductFromCart,
 } from '../../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import {CartState, ProductsState, Transaction} from '../../../redux/interfaces';
@@ -53,7 +54,12 @@ const HomeUI: FC = (): JSX.Element => {
                 synchronized: false,
                 refunded: false,
               };
+              // adding transaction to reducer
               dispatch(addTransactionToTransactions(transaction));
+              // deleting cart items
+              cartState.productsList.forEach(element => {
+                dispatch(deleteProductFromCart(element));
+              });
             }}
           />
         </View>
