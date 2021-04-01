@@ -36,7 +36,7 @@ export const CartReducer = (
     case ADD_PRODUCT_TO_CART:
       // check if element already exists in the cart
       const index: number = state.productsList.findIndex(
-        element => element.title === action.payload.title,
+        element => element.id === action.payload.id,
       );
       if (index === -1) {
         state.productsList = [action.payload, ...state.productsList];
@@ -76,7 +76,7 @@ export const ProductsReducer = (
     case ADD_PRODUCT_TO_PRODUCTS: {
       // check if item is already added to update only the quantity
       const index: number = state.productsList.findIndex(
-        element => element.title === action.payload.title,
+        element => element.id === action.payload.id,
       );
       if (index === -1) {
         state.productsList = [action.payload, ...state.productsList];
@@ -100,7 +100,7 @@ export const ProductsReducer = (
     case UPDATE_PRODUCT_QUANTITY: {
       // check if item is in products list
       const index: number = state.productsList.findIndex(
-        element => element.title === action.payload.title,
+        element => element.id === action.payload.id,
       );
       if (index === -1) {
         return state;
@@ -117,7 +117,7 @@ export const ProductsReducer = (
     case ADD_PRODUCT_TO_PRODUCTS_REPLACED: {
       // check if item is already added to replace it
       const index: number = state.productsList.findIndex(
-        element => element.title === action.payload.title,
+        element => element.id === action.payload.id,
       );
       if (index === -1) {
         state.productsList = [action.payload, ...state.productsList];
@@ -132,7 +132,7 @@ export const ProductsReducer = (
     case ADD_PRODUCT_FROM_API: {
       // check if item is already added to not replace it
       const index: number = state.productsList.findIndex(
-        element => element.title === action.payload.title,
+        element => element.id === action.payload.id,
       );
       if (index === -1) {
         state.productsList = [action.payload, ...state.productsList];

@@ -55,7 +55,7 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
   const deleteProductFromMyCart = (item: DataObject): void => {
     // get quantity of current product in products reducer
     const index: number = productsState.productsList.findIndex(
-      element => element.title === item.title,
+      element => element.id === item.id,
     );
     dispatch(deleteProductFromCart(item));
     dispatch(

@@ -41,11 +41,11 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   const addProductToMyCart = (item: DataObject): void => {
     // check if item is already in cart list
     const index: number = cartState.productsList.findIndex(
-      element => element.title === item.title,
+      element => element.id === item.id,
     );
     // check for quantity of current product in products reducer
     const productIndex: number = productsState.productsList.findIndex(
-      element => element.title === item.title,
+      element => element.id === item.id,
     );
     if (productsState.productsList[productIndex].quantity === 0) {
       return;
