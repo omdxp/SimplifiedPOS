@@ -28,6 +28,17 @@ const TransactionDetails: FC<TransactionDetailsProps> = ({
     return quantity;
   };
 
+  // this function calculate the total price of all products in this transaction
+  const calculateTotalPrice = (): number => {
+    let totalPrice: number = 0;
+    transaction?.productsList.forEach(element => {
+      for (let i = 0; i < element.quantity; i++) {
+        totalPrice += element.price;
+      }
+    });
+    return totalPrice;
+  };
+
   // check if transaction is available
   if (transaction?.id) {
     return (
@@ -83,6 +94,9 @@ const TransactionDetails: FC<TransactionDetailsProps> = ({
             />
           )}
         />
+        <Text style={globalStyles.transactionDetailsProductPriceText}>
+          Total price: ${calculateTotalPrice()}
+        </Text>
       </View>
     );
   }
