@@ -109,5 +109,27 @@ const globalStyles = StyleSheet.create({
     width: 20,
     borderRadius: 20,
   },
+  // transaction details styles
+  transactionDetailsView: {
+    borderLeftWidth: 1,
+    borderLeftColor: Colors.mainColorDark,
+  },
+  transactionDetailsTitleText: {
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  transactionDetailsNormalText: {
+    fontSize: 20,
+  },
+  transactionDetailsProductView: {
+    margin: 10,
+  },
+  transactionDetailsProductText: {
+    fontSize: 18,
+  },
+  transactionDetailsProductPriceText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
 });
 export default globalStyles;

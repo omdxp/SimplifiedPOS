@@ -33,38 +33,45 @@ const TransactionDetails: FC<TransactionDetailsProps> = ({
   if (transaction?.id) {
     return (
       <View
-        style={[
-          globalStyles.mainView,
-          {borderLeftWidth: 1, borderLeftColor: Colors.mainColorDark},
-        ]}>
-        <Text style={{textAlign: 'center', fontSize: 30}}>
+        style={[globalStyles.mainView, globalStyles.transactionDetailsView]}>
+        <Text style={globalStyles.transactionDetailsTitleText}>
           ID: {transaction?.id}
         </Text>
-        <Text style={{fontSize: 20}}>
+        <Text style={globalStyles.transactionDetailsNormalText}>
           Products Quantity: {transaction?.productsList.length}
         </Text>
-        <Text style={{fontSize: 20}}>
+        <Text style={globalStyles.transactionDetailsNormalText}>
           This transaction is {transaction?.synchronized ? '' : 'not'}{' '}
           synchronized.
         </Text>
-        <Text style={{fontSize: 20}}>
+        <Text style={globalStyles.transactionDetailsNormalText}>
           This transaction is {transaction?.refunded ? '' : 'not'} refunded.
         </Text>
-        <Text style={{fontSize: 20}}>Products List:</Text>
+        <Text style={globalStyles.transactionDetailsNormalText}>
+          Products List:
+        </Text>
         <FlatList
           data={transaction?.productsList}
           renderItem={({item}) => (
-            <View style={{margin: 10}}>
-              <Text style={{fontSize: 18}}>Product ID: {item.id}</Text>
+            <View style={globalStyles.transactionDetailsProductView}>
+              <Text style={globalStyles.transactionDetailsProductText}>
+                Product ID: {item.id}
+              </Text>
               <View style={globalStyles.rowView}>
-                <Text style={{fontWeight: 'bold', fontSize: 18}}>
+                <Text
+                  style={[
+                    globalStyles.transactionDetailsNormalText,
+                    {fontWeight: 'bold'},
+                  ]}>
                   {item.title}
                 </Text>
-                <Text style={{fontSize: 30, fontWeight: 'bold'}}>
+                <Text style={globalStyles.transactionDetailsProductPriceText}>
                   ${item.price}
                 </Text>
               </View>
-              <Text style={{fontSize: 18}}>Quantity: {item.quantity}</Text>
+              <Text style={globalStyles.transactionDetailsProductText}>
+                Quantity: {item.quantity}
+              </Text>
             </View>
           )}
           keyExtractor={(_, index) => index.toString()}
