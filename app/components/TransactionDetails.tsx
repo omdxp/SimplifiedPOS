@@ -15,20 +15,19 @@ interface TransactionDetailsProps {
   transaction?: Transaction;
 }
 
-// export type DataObject = {
-//   id: string;
-//   title: string;
-//   description: string;
-//   image: string;
-//   price: number;
-//   quantity: number;
-//   synchronized: boolean;
-// };
-
 // export TransactionDetails component
 const TransactionDetails: FC<TransactionDetailsProps> = ({
   transaction,
 }): JSX.Element => {
+  // this function calculate the quantity of all products
+  const calculateProductsQuantity = (): number => {
+    let quantity: number = 0;
+    transaction?.productsList.forEach(
+      element => (quantity += element.quantity),
+    );
+    return quantity;
+  };
+
   // check if transaction is available
   if (transaction?.id) {
     return (
@@ -38,7 +37,7 @@ const TransactionDetails: FC<TransactionDetailsProps> = ({
           ID: {transaction?.id}
         </Text>
         <Text style={globalStyles.transactionDetailsNormalText}>
-          Products Quantity: {transaction?.productsList.length}
+          Products Quantity: {calculateProductsQuantity()}
         </Text>
         <Text style={globalStyles.transactionDetailsNormalText}>
           This transaction is {transaction?.synchronized ? '' : 'not'}{' '}
