@@ -111,8 +111,8 @@ const globalStyles = StyleSheet.create({
   },
   // transaction details styles
   transactionDetailsView: {
-    borderLeftWidth: 1,
-    borderLeftColor: Colors.mainColorDark,
+    borderWidth: 1,
+    borderColor: Colors.mainColorDark,
   },
   transactionDetailsTitleText: {
     textAlign: 'center',

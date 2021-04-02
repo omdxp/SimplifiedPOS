@@ -28,7 +28,7 @@ const StackNavigation: FC = (): JSX.Element => (
 
 const Navigation: FC = (): JSX.Element => {
   return (
-    <Drawer.Navigator initialRouteName={'Checkout'}>
+    <Drawer.Navigator initialRouteName={'Checkout'} drawerType={'permanent'}>
       <Drawer.Screen name="Checkout" component={StackNavigation} />
       <Drawer.Screen name="Transactions" component={TransactionsScreen} />
     </Drawer.Navigator>
