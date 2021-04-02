@@ -47,8 +47,8 @@ const TransactionsUI: FC = (): JSX.Element => {
           ItemSeparatorComponent={() => (
             <View
               style={{
-                borderBottomWidth: 1,
-                borderBottomColor: Colors.lightGrey,
+                borderWidth: 1,
+                borderColor: Colors.lightGrey,
               }}
             />
           )}
