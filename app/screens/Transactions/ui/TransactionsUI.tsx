@@ -7,7 +7,7 @@ import {} from '../functions';
 
 // import redux
 import {useSelector} from 'react-redux';
-import {TransactionsState} from '../../../redux/interfaces';
+import {RootState, TransactionsState} from '../../../redux/interfaces';
 
 // import components
 import TransactionTileComponent from '../../../components/TransactionTile';
@@ -17,13 +17,16 @@ import TransactionDetailsComponent from '../../../components/TransactionDetails'
 import globalStyles from '../../../styles';
 import {Colors} from '../../../styles/colors';
 
+// import data types
+import {Transaction} from '../../../interfaces';
+
 // export Transactions UI
 const TransactionsUI: FC = (): JSX.Element => {
   // use selected transaction state
-  const [selectedTransaction, setSelectedTransaction] = useState();
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction>();
   // use transactions selector
   const transactionsState: TransactionsState = useSelector(
-    state => state.TransactionsReducer,
+    (state: RootState) => state.TransactionsReducer,
   );
   return (
     <View style={globalStyles.mainView}>

@@ -1,6 +1,13 @@
 import {AnyAction} from 'redux';
+import {store} from '../store';
+
 // import data types
 import {DataObject, DataType, Transaction} from '../../interfaces';
+
+/**
+ * Root State
+ */
+export type RootState = ReturnType<typeof store.getState>;
 
 /**
  * Cart Interfaces

@@ -13,7 +13,7 @@ import ProductItemComponent from '../components/ProductItem';
 
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
-import {CartState, ProductsState} from '../redux/interfaces';
+import {CartState, ProductsState, RootState} from '../redux/interfaces';
 import {deleteProductFromCart, updateProductQuantity} from '../redux/actions';
 
 // import global styles
@@ -31,18 +31,20 @@ interface CartProps {
 // export Cart component
 const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
   // use cart selector
-  const cartState: CartState = useSelector(state => state.CartReducer);
+  const cartState: CartState = useSelector(
+    (state: RootState) => state.CartReducer,
+  );
 
   // use products selector
   const productsState: ProductsState = useSelector(
-    state => state.ProductsReducer,
+    (state: RootState) => state.ProductsReducer,
   );
 
   // use dispatch
   const dispatch = useDispatch();
 
   // use pay disabled state
-  const [payDisabled, setPayDisabled] = useState(false);
+  const [payDisabled, setPayDisabled] = useState<boolean>(false);
 
   // use effect when cart state is changing to check if pay should be disabled
   useEffect(() => {

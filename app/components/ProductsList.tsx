@@ -14,7 +14,7 @@ import {DataObject, DataType} from '../interfaces';
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
 import {addProductToCart, updateProductQuantity} from '../redux/actions';
-import {CartState, ProductsState} from '../redux/interfaces';
+import {CartState, ProductsState, RootState} from '../redux/interfaces';
 
 // define products list props interface
 interface ProductsListProps {
@@ -27,11 +27,13 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
   const dispatch = useDispatch();
 
   // use cart selector
-  const cartState: CartState = useSelector(state => state.CartReducer);
+  const cartState: CartState = useSelector(
+    (state: RootState) => state.CartReducer,
+  );
 
   // use products selector
   const productsState: ProductsState = useSelector(
-    state => state.ProductsReducer,
+    (state: RootState) => state.ProductsReducer,
   );
 
   // use navigation

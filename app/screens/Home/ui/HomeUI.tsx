@@ -16,7 +16,10 @@ import {
   deleteProductFromCart,
 } from '../../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import {CartState, ProductsState, Transaction} from '../../../redux/interfaces';
+import {CartState, ProductsState, RootState} from '../../../redux/interfaces';
+
+// import data types
+import {Transaction} from '../../../interfaces';
 
 // import test data
 import {DATA} from '../../../test_data';
@@ -35,10 +38,12 @@ const HomeUI: FC = (): JSX.Element => {
   const dispatch = useDispatch();
   // use products selector
   const productState: ProductsState = useSelector(
-    state => state.ProductsReducer,
+    (state: RootState) => state.ProductsReducer,
   );
   // use cart selector
-  const cartState: CartState = useSelector(state => state.CartReducer);
+  const cartState: CartState = useSelector(
+    (state: RootState) => state.CartReducer,
+  );
   return (
     <View style={globalStyles.mainView}>
       <View style={globalStyles.rowView}>
