@@ -16,7 +16,7 @@ import {Colors} from '../styles/colors';
 interface ProductProps {
   title: string;
   image: string;
-  price: string;
+  price: number;
   quantity: number;
   productOutOfStock: boolean;
   onPress: (event: GestureResponderEvent) => void;

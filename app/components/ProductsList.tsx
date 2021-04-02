@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import ProductComponent from './Product';
 
 // import data type
-import {DataObject, DataType} from '../test_data';
+import {DataObject, DataType} from '../interfaces';
 
 // import redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -73,7 +73,7 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
 
   return (
     <FlatList
-      numColumns={4}
+      numColumns={3}
       initialNumToRender={4}
       data={data}
       keyExtractor={(_, index) => index.toString()}

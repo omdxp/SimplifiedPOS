@@ -21,7 +21,7 @@ import globalStyles from '../styles';
 import {Colors} from '../styles/colors';
 
 // import data types
-import {DataObject} from '../test_data';
+import {DataObject} from '../interfaces';
 
 // define cart props interface
 interface CartProps {
@@ -55,7 +55,7 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
   const deleteProductFromMyCart = (item: DataObject): void => {
     // get quantity of current product in products reducer
     const index: number = productsState.productsList.findIndex(
-      element => element.id === item.id,
+      (element: DataObject) => element.id === item.id,
     );
     dispatch(deleteProductFromCart(item));
     dispatch(

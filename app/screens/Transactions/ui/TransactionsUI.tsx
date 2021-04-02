@@ -7,7 +7,7 @@ import {} from '../functions';
 
 // import redux
 import {useSelector} from 'react-redux';
-import {Transaction, TransactionsState} from '../../../redux/interfaces';
+import {TransactionsState} from '../../../redux/interfaces';
 
 // import components
 import TransactionTileComponent from '../../../components/TransactionTile';

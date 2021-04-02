@@ -3,7 +3,7 @@ import React, {FC} from 'react';
 import {Text, View, FlatList} from 'react-native';
 
 // import data types
-import {Transaction} from '../redux/interfaces';
+import {Transaction} from '../interfaces';
 
 // import global styles
 import globalStyles from '../styles';

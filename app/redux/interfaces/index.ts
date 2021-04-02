@@ -1,6 +1,6 @@
 import {AnyAction} from 'redux';
 // import data types
-import {DataObject, DataType} from '../../test_data';
+import {DataObject, DataType, Transaction} from '../../interfaces';
 
 /**
  * Cart Interfaces
@@ -33,13 +33,6 @@ export interface ProductsState {
 /**
  * Transactions Interfaces
  */
-// transaction interface
-export interface Transaction {
-  id: string;
-  productsList: DataType;
-  synchronized: boolean;
-  refunded: boolean;
-}
 // transactions actions interface
 export interface TransactionsAction extends AnyAction {
   type: string;
