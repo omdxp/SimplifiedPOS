@@ -1,7 +1,6 @@
 // import react native
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {Text, View, FlatList} from 'react-native';
 
 // import data types
 import {Transaction} from '../redux/interfaces';
