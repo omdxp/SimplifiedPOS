@@ -12,6 +12,7 @@ export const DATA: DataType = [
     price: 25,
     quantity: 3,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '2',
@@ -23,6 +24,7 @@ export const DATA: DataType = [
     price: 50,
     quantity: 5,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '3',
@@ -34,6 +36,7 @@ export const DATA: DataType = [
     price: 40,
     quantity: 14,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '4',
@@ -45,6 +48,7 @@ export const DATA: DataType = [
     price: 60,
     quantity: 10,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '5',
@@ -56,6 +60,7 @@ export const DATA: DataType = [
     price: 30,
     quantity: 7,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '6',
@@ -67,6 +72,7 @@ export const DATA: DataType = [
     price: 0,
     quantity: 2,
     synchronized: true,
+    created: new Date().toISOString(),
   },
   {
     id: '7',
@@ -77,5 +83,6 @@ export const DATA: DataType = [
     price: 20,
     quantity: 1,
     synchronized: true,
+    created: new Date().toISOString(),
   },
 ];

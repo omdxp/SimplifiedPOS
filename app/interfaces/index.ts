@@ -7,6 +7,7 @@ export type DataObject = {
   price: number;
   quantity: number;
   synchronized: boolean;
+  created: string;
 };
 
 // define data type
