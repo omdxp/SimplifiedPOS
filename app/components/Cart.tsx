@@ -96,7 +96,13 @@ const Cart: FC<CartProps> = ({onPayPress}): JSX.Element => {
         )}
         keyExtractor={(_, index) => index.toString()}
         ItemSeparatorComponent={() => (
-          <View style={{borderWidth: 1, borderColor: Colors.lightGrey}} />
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: Colors.lightGrey,
+              backgroundColor: Colors.lightGrey,
+            }}
+          />
         )}
       />
       <Text style={globalStyles.cartTotalPriceText}>

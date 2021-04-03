@@ -89,6 +89,7 @@ const TransactionDetails: FC<TransactionDetailsProps> = ({
               style={{
                 borderWidth: 1,
                 borderColor: Colors.lightGrey,
+                backgroundColor: Colors.lightGrey,
               }}
             />
           )}

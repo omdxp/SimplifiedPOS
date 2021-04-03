@@ -52,6 +52,7 @@ const TransactionsUI: FC = (): JSX.Element => {
               style={{
                 borderWidth: 1,
                 borderColor: Colors.lightGrey,
+                backgroundColor: Colors.lightGrey,
               }}
             />
           )}
