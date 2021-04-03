@@ -12,13 +12,8 @@ import {
 } from '../constants';
 
 // import data type
-import {DataObject} from '../../test_data';
-import {
-  CartAction,
-  ProductsAction,
-  Transaction,
-  TransactionsAction,
-} from '../interfaces';
+import {DataObject, Transaction} from '../../interfaces';
+import {CartAction, ProductsAction, TransactionsAction} from '../interfaces';
 
 // Cart actions
 /**

@@ -98,6 +98,7 @@ const ProductsList: FC<ProductsListProps> = ({data}): JSX.Element => {
                 description: item.description,
                 price: item.price,
                 quantity: item.quantity,
+                created: item.created,
               });
             }}
           />

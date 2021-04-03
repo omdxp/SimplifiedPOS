@@ -1,6 +1,6 @@
 // import react native
 import React, {FC} from 'react';
-import {Text, View, Image, ScrollView} from 'react-native';
+import {Text, View, Image, ScrollView, Route} from 'react-native';
 
 // import global styles
 import globalStyles from '../../../styles';
@@ -15,16 +15,18 @@ interface ProductDetailsProps {
   description: string;
   price: string;
   quantity: number;
+  created: string;
 }
 
 // export ProductDetails UI
-const ProductDetailsUI: FC = ({route}): JSX.Element => {
+const ProductDetailsUI: FC = ({route}: Route): JSX.Element => {
   const {
     image,
     title,
     description,
     price,
     quantity,
+    created,
   }: ProductDetailsProps = route.params;
   return (
     <View style={globalStyles.mainView}>
@@ -33,6 +35,9 @@ const ProductDetailsUI: FC = ({route}): JSX.Element => {
         <Text style={globalStyles.productDetailsTitleText}>{title}</Text>
         <Text style={globalStyles.productDetailsDescriptionText}>
           {description}
+        </Text>
+        <Text style={globalStyles.productDetailsDescriptionText}>
+          Created at: {created}
         </Text>
         <Text style={globalStyles.productDetailsPriceText}>
           Quantity: {quantity}
