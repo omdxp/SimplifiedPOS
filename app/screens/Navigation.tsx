@@ -17,6 +17,7 @@ const Drawer = createDrawerNavigator();
 import HomeScreen from './Home/ui/HomeUI';
 import ProductDetailsScreen from './ProductDetails/ui/ProductDetailsUI';
 import TransactionsScreen from './Transactions/ui/TransactionsUI';
+import RequestsTestScreen from './RequestsTest/ui/RequestsTestUI';
 
 // define stack navigation
 const StackNavigation: FC = (): JSX.Element => (
@@ -31,6 +32,7 @@ const Navigation: FC = (): JSX.Element => {
     <Drawer.Navigator initialRouteName={'Checkout'} drawerType={'permanent'}>
       <Drawer.Screen name="Checkout" component={StackNavigation} />
       <Drawer.Screen name="Transactions" component={TransactionsScreen} />
+      <Drawer.Screen name="RequestsTest" component={RequestsTestScreen} />
     </Drawer.Navigator>
   );
 };
